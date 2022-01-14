@@ -35,17 +35,20 @@ public class Player_Ctrl : MonoBehaviour {
 		rigidbody.WakeUp(); 
 		if(Input.GetKeyDown (KeyCode.Space) && PS != PlayerState.Death){ //점프키가 눌리고, 플레이어가 죽은 상태가 아니라면
 			if (Input.GetKeyDown (KeyCode.Space)) //점프키가 눌리면
-			if(PS == PlayerState.Jump){  //플레이어 상태가 점프라면 
-				D_Jump ();//더블점프 
-			}
-			if(PS == PlayerState.Run){ //플레이어 상태가 달리기라면
-				Jump (); //점프 
-			}
+				if(PS == PlayerState.Jump){  //플레이어 상태가 점프라면 
+					D_Jump ();//더블점프 
+				}
+				if(PS == PlayerState.Run){//플레이어 상태가 달리기라면
+					Jump (); //점프 
+				}
 		}
-		if (Input.GetKeyDown (KeyCode.LeftShift) && Input.GetKey (KeyCode.Z))
-			Sliding ();
-		else if (Input.GetKeyUp (KeyCode.LeftShift))
-			GoUp ();
+		if (Input.GetKeyDown (KeyCode.LeftShift))
+			if (PS == PlayerState.Run)
+				Sliding ();
+		
+		if (Input.GetKeyUp (KeyCode.LeftShift))
+			if (PS == PlayerState.Sliding)
+				GoUp ();
 	}
 	
 	void Jump(){
@@ -74,19 +77,28 @@ public class Player_Ctrl : MonoBehaviour {
 		animator.SetBool("Ground",true);
 	}
 	void OnCollisionEnter(Collision collision){
-		if(PS != PlayerState.Run && PS != PlayerState.Death){
+		if(PS != PlayerState.Run && PS != PlayerState.Death && PS !=PlayerState.Sliding){
 			Run();
 		}
 	}
 	
+
 	void Sliding()
 	{
+		PS = PlayerState.Sliding;
 		transform.rotation = Quaternion.Euler(0,0,-90);
+
+		animator.SetTrigger("Sliding");
+		animator.SetBool("Ground",false);
 	}
 	
 	void GoUp()
 	{
-		transform.rotation = Quaternion.Euler(0,0,0);
+		transform.transform.rotation = Quaternion.Euler(0,0,0);
+		Run();
+
+		animator.SetTrigger("GoUp");
+		animator.SetBool("Ground",false);
 	}
 	
 	void CoinGet(){
