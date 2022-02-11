@@ -117,8 +117,8 @@ public class Player_Ctrl : MonoBehaviour {
 		transform.transform.rotation = Quaternion.Euler(0,0,0);
 		rig.MovePosition (transform.position + Vector3.up);
 		Run();
-
-		animator.SetBool("Ground",false);
+		animator.SetTrigger("Run"); //Fix
+		animator.SetBool("Ground",true);
 	}
 	//---------------------------------------------------------------------------------------------
 	
