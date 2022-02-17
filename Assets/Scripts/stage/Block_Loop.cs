@@ -52,20 +52,20 @@ public class Block_Loop : MonoBehaviour {
 			Application.LoadLevel("stage_2");
 		}
 		
-		//else if (Meter == 1000)
-		//{
-			//Application.LoadLevel ("stage_3");
-		//}
+		else if (Meter == 1000)
+		{
+			Application.LoadLevel ("stage_3");
+		}
 		
-		//else if (Meter == 1500)
-		//{
-			//Application.LoadLevel ("stage_4");
-		//}
+		else if (Meter == 1500)
+		{
+			Application.LoadLevel ("stage_4");
+		}
 		
 		//엔딩씬
-		//else if (Meter == 1500)
-		//{
-			//Application.LoadLevel ("ending");
-		//}
+		else if (Meter == 1500)
+		{
+			Application.LoadLevel ("ending");
+		}
 	}
 }
