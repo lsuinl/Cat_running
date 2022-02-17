@@ -24,18 +24,25 @@ public class GameManager : MonoBehaviour {
 
 	public void Update(){
 
+
+		meter ();
+	}
+
+	public void CoinGet(){
+		if (GS != GameState.End) {
+		Gold += 1;
+		Text_Gold.text = string.Format ("{0}", Gold);
+		}
+	}
+
+	public void meter(){
 		if (GS == GameState.Play) {
 			Meter += Time.deltaTime * Speed;
-
+			
 			Text_Meter.text = string.Format("{0:N0}m",Meter);
 		}
 	}
 
-	public void CoinGet(){
-
-		Gold += 1;
-		Text_Gold.text = string.Format ("{0}", Gold);
-	}
 
 	public void GameOver(){
 

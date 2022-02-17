@@ -25,6 +25,8 @@ public class Player_Ctrl : MonoBehaviour {
 	
 	public GameObject AnotherSpeaker;
 	public GameManager GM;
+	public float Meter;
+
 	void Start()
 	{
 		collider = GetComponent<CapsuleCollider>();
@@ -32,6 +34,9 @@ public class Player_Ctrl : MonoBehaviour {
 	}
 	//------------------------------------------------------------
 	void Update(){
+
+		SceneChange ();
+		
 		rigidbody.WakeUp(); 
 		if(Input.GetKeyDown (KeyCode.Space) && PS != PlayerState.Death){ //점프키가 눌리고, 플레이어가 죽은 상태가 아니라면
 			if(PS == PlayerState.Jump){  //플레이어 상태가 점프라면 
@@ -166,5 +171,25 @@ public class Player_Ctrl : MonoBehaviour {
 	void OffStrong()
 	{
 		gameObject.layer = 0; //player layer이 Default로 바뀜
+	}
+
+	void SceneChange(){
+		if (PS != PlayerState.Death) {  //죽으면 스테이지 넘김 x
+			Meter += Time.deltaTime * 10;
+		}
+		if(Meter>=50){
+			if(Application.loadedLevel==0){ //해당 씬의 인덱스를 확인(0==스테이지 1로 빌드해야함. )
+				Application.LoadLevel ("stage_2");
+			}
+			else if (Application.loadedLevel==1)
+			{
+				Application.LoadLevel ("stage_3");
+			}
+			
+			else if (Application.loadedLevel==2)
+			{
+				Application.LoadLevel ("stage_4");
+			}
+		}    
 	}
 }
