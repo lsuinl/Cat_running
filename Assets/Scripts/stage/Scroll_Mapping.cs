@@ -12,4 +12,5 @@ public class Scroll_Mapping : MonoBehaviour
 		renderer.material.mainTextureOffset = new Vector2 (Target_Offset, 0);
 	
 	}
+	
 }

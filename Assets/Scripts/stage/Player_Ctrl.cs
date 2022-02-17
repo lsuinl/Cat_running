@@ -26,7 +26,9 @@ public class Player_Ctrl : MonoBehaviour {
 	public GameObject AnotherSpeaker;
 	public GameManager GM;
 	public float Meter;
-
+	
+	SpriteRenderer spriteRenderer;
+	
 	void Start()
 	{
 		collider = GetComponent<CapsuleCollider>();
@@ -34,7 +36,7 @@ public class Player_Ctrl : MonoBehaviour {
 	}
 	//------------------------------------------------------------
 	void Update(){
-
+		
 		SceneChange ();
 		
 		rigidbody.WakeUp(); 
@@ -50,7 +52,7 @@ public class Player_Ctrl : MonoBehaviour {
 				Jump ();
 			}
 		}
-
+		
 		if (Input.GetKey (KeyCode.LeftShift))//점프 도중에 슬라이드를 눌러도 캐릭터가 바닿에 내려가면 바로 슬라이드가 가능하도록 함(GetKey)
 			if (PS == PlayerState.Run)
 				Sliding ();
@@ -58,7 +60,7 @@ public class Player_Ctrl : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.LeftShift))
 			if (PS == PlayerState.Sliding)
 				GoUp ();
-
+		
 		if (Input.touchCount > 0) {
 			if(Input.GetTouch(0).phase == TouchPhase.Began){
 				if(PS == PlayerState.Jump){  //플레이어 상태가 점프라면 
@@ -71,9 +73,9 @@ public class Player_Ctrl : MonoBehaviour {
 					GoUp();
 					Jump ();
 				}
-			
-			}
 				
+			}
+			
 		}
 	}
 	//---------------------------------------------------------------
@@ -162,22 +164,24 @@ public class Player_Ctrl : MonoBehaviour {
 		}
 	}
 	
-	void OnStrong()
+	void OnStrong() //강화 함수
 	{
 		this.gameObject.layer = 9; //player layer이 9번 (Strong)으로 바뀜
+		spriteRenderer.color = new Color (1, 1, 1, 0.5f); //무적상태가 되면 캐릭터가 약간 투명해지도록
 		Invoke ("OffStrong", 5); //5초 후에는 OffStrong 함수 실행
+		
 	}
 	
-	void OffStrong()
+	void OffStrong() //강화해제 함수
 	{
 		gameObject.layer = 0; //player layer이 Default로 바뀜
 	}
-
+	
 	void SceneChange(){
 		if (PS != PlayerState.Death) {  //죽으면 스테이지 넘김 x
 			Meter += Time.deltaTime * 10;
 		}
-		if(Meter>=50){
+		if(Meter>=500){
 			if(Application.loadedLevel==0){ //해당 씬의 인덱스를 확인(0==스테이지 1로 빌드해야함. )
 				Application.LoadLevel ("stage_2");
 			}
@@ -189,6 +193,10 @@ public class Player_Ctrl : MonoBehaviour {
 			else if (Application.loadedLevel==2)
 			{
 				Application.LoadLevel ("stage_4");
+			}
+			else if (Application.loadedLevel==2)
+			{
+				Application.LoadLevel ("ending");
 			}
 		}    
 	}

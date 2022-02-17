@@ -38,8 +38,22 @@ public class GameManager : MonoBehaviour {
 	public void meter(){
 		if (GS == GameState.Play) {
 			Meter += Time.deltaTime * Speed;
+			if(Application.loadedLevel==0){
+				Text_Meter.text = string.Format("{0:N0}m",Meter);
+			}
+			else if (Application.loadedLevel==1)
+			{
+				Text_Meter.text = string.Format("{0:N0}m",Meter+50);;
+			}
 			
-			Text_Meter.text = string.Format("{0:N0}m",Meter);
+			else if (Application.loadedLevel==2)
+			{
+				Text_Meter.text = string.Format("{0:N0}m",Meter+100);
+			}
+			else if (Application.loadedLevel==3)
+			{
+				Text_Meter.text = string.Format("{0:N0}m",Meter+150);
+			}
 		}
 	}
 
