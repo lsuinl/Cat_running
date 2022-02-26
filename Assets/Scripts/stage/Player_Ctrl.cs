@@ -26,9 +26,13 @@ public class Player_Ctrl : MonoBehaviour {
 	public GameObject AnotherSpeaker;
 	public GameManager GM;
 	public float Meter;
+
+	public GameObject Fish;
+	public GUITexture JumpButton;
+	public GUITexture SlideButton;
 	
-	SpriteRenderer spriteRenderer;
-	
+	//SpriteRenderer spriteRenderer;
+
 	void Start()
 	{
 		collider = GetComponent<CapsuleCollider>();
@@ -78,6 +82,7 @@ public class Player_Ctrl : MonoBehaviour {
 			
 		}
 	}
+	
 	//---------------------------------------------------------------
 	void Jump(){
 		PS = PlayerState.Jump;
@@ -113,6 +118,7 @@ public class Player_Ctrl : MonoBehaviour {
 	void Sliding()
 	{
 		PS = PlayerState.Sliding;
+		SlidingSound();
 		transform.rotation = Quaternion.Euler(0,0,-90);
 		rig.MovePosition(transform.position + Vector3.down); //캐릭터가 누울때 내려가는 움직임을 없애줌 
 		animator.SetTrigger("Sliding");
@@ -128,7 +134,16 @@ public class Player_Ctrl : MonoBehaviour {
 		animator.SetBool("Ground",true);
 	}
 	//---------------------------------------------------------------------------------------------
+
+	public void ActiveTheRainbowFish () {
+		Fish.SetActive(true);
+		
+	}
 	
+	public void DeactiveTheRainbowFish(){
+		Fish.SetActive(false);
+	}
+
 	void CoinGet(){
 		SoundPlay (0);
 		if (GM != null) {
@@ -140,6 +155,10 @@ public class Player_Ctrl : MonoBehaviour {
 		PS = PlayerState.Death;
 		SoundPlay (1);
 		GM.GameOver ();
+	}
+
+	void SlidingSound(){
+		SoundPlay(3);
 	}
 	
 	void SoundPlay(int Num){
@@ -167,14 +186,17 @@ public class Player_Ctrl : MonoBehaviour {
 	void OnStrong() //강화 함수
 	{
 		this.gameObject.layer = 9; //player layer이 9번 (Strong)으로 바뀜
-		spriteRenderer.color = new Color (1, 1, 1, 0.5f); //무적상태가 되면 캐릭터가 약간 투명해지도록
-		Invoke ("OffStrong", 5); //5초 후에는 OffStrong 함수 실행
+		ActiveTheRainbowFish (); //오른쪽 상단에 무지개붕어빵 그림 활성화
+		//spriteRenderer.color = new Color (1, 1, 1, 0.5f); //무적상태가 되면 캐릭터가 약간 투명해지도록
+		Invoke ("OffStrong", 3); //3초 후에는 OffStrong 함수 실행
 		
 	}
 	
 	void OffStrong() //강화해제 함수
 	{
-		gameObject.layer = 0; //player layer이 Default로 바뀜
+		this.gameObject.layer = 0; //player layer이 Default로 바뀜
+		DeactiveTheRainbowFish (); //오른쪽 상단에 무지개붕어빵 그림 비활성화
+		//spriteRenderer.color = new Color (1, 1, 1, 1); //투명화 해제
 	}
 	
 	void SceneChange(){

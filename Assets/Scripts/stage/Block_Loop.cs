@@ -9,9 +9,13 @@ public class Block_Loop : MonoBehaviour {
 	public GameObject B_Zone;
 	public float Meter = 0;
 
+	//public AudioClip[] Sound;
+	
+
 	void Start(){
 
 		SceneChange ();
+		//SoundPlay (0);
 
 	}
 
@@ -19,7 +23,13 @@ public class Block_Loop : MonoBehaviour {
 
 		Move ();
 
+
 	}
+
+	//void SoundPlay(int Num){
+		//audio.clip = Sound [Num];
+		//audio.Play ();
+	//}
 
 	void Move() {
 		A_Zone.transform.Translate (Vector3.left * Speed * Time.deltaTime);
@@ -45,6 +55,7 @@ public class Block_Loop : MonoBehaviour {
 
 	public void SceneChange()
 	{
+
 		Meter += Time.deltaTime * 10;
 		
 		if (Meter == 50.0)
@@ -63,7 +74,7 @@ public class Block_Loop : MonoBehaviour {
 		}
 		
 		//엔딩씬
-		else if (Meter == 1500)
+		else if (Meter == 2000)
 		{
 			Application.LoadLevel ("ending");
 		}
