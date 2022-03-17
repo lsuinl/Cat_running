@@ -1,0 +1,4 @@
+Got config end = ''
+Cannot logout when not connected
+StatusCommand::Run()
+fstat  "D:/220225/ProjectSettings/AudioManager.asset" "D:/220225/ProjectSettings/DynamicsManager.asset" "D:/220225/ProjectSettings/EditorBuildSettings.asset" "D:/220225/ProjectSettings/EditorSettings.asset" "D:/220225/ProjectSettings/GraphicsSettings.asset" "D:/220225/ProjectSettings/InputManager.asset" "D:/220225/ProjectSettings/NavMeshLayers.asset" "D:/220225/ProjectSettings/NetworkManager.asset" "D:/220225/ProjectSettings/Physics2DSettings.asset" "D:/220225/ProjectSettings/ProjectSettings.asset" "D:/220225/ProjectSettings/QualitySettings.asset" "D:/220225/ProjectSettings/TagManager.asset" "D:/220225/ProjectSettings/TimeManager.asset" 
