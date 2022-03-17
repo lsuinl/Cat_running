@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public GUIText Final_Meter;
 	public GUIText Final_Gold;
 	public GameObject Pause_GUI;
+	public GameObject AnotherSpeaker;
 
 	public float Speed;
 	public float Meter;
@@ -30,8 +31,9 @@ public class GameManager : MonoBehaviour {
 
 	public void CoinGet(){
 		if (GS != GameState.End) {
-		Gold += 1;
-		Text_Gold.text = string.Format ("{0}", Gold);
+			AnotherSpeaker.SendMessage ("SoundPlay");
+			Gold += 1;
+			Text_Gold.text = string.Format ("{0}", Gold);
 		}
 	}
 
@@ -94,5 +96,6 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1f;
 		Pause_GUI.SetActive (false);
 	}
+
 
 }
