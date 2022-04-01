@@ -26,7 +26,7 @@ public class Player_Ctrl : MonoBehaviour {
 	public GameObject AnotherSpeaker;
 	public GameManager GM;
 	public float Meter;
-	public int strongtime = 0;
+	public float strongtime;
 
 	public GameObject Fish;
 	public GUITexture JumpButton;
@@ -64,6 +64,10 @@ public class Player_Ctrl : MonoBehaviour {
 		if (z==1)//슬라이드 손 떼기 
 			if (PS == PlayerState.Sliding)
 				GoUp ();
+
+		if (strongtime != 0 && strongtime <= Meter) {
+			OffStrong();
+		}
 	
 	}
 	//---------------------------------------------------------------
@@ -184,9 +188,11 @@ public class Player_Ctrl : MonoBehaviour {
 		this.gameObject.layer = 9; //player layer이 9번 (Strong)으로 바뀜
 		ActiveTheRainbowFish (); //오른쪽 상단에 무지개붕어빵 그림 활성화
 		//spriteRenderer.color = new Color (1, 1, 1, 0.5f); //무적상태가 되면 캐릭터가 약간 투명해지도록
-		strongtime += 3; //무지개 붕어빵을 하나 새로 먹을 때마다 무적시간 3초 추가
-		Invoke ("OffStrong", strongtime); //3초 후에는 OffStrong 함수 실행
-		
+		if (strongtime == 0) {
+			strongtime = Meter + 30;
+		} else {
+			strongtime+=30;
+		}
 	}
 	
 	void OffStrong() //강화해제 함수
