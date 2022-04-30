@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	public static int Stage2Gold; //스테이지 1, 2에서 먹은 붕어빵 총 개수
 	public static int Stage3Gold; //스테이지 1~3에서 먹은 붕어빵 총 개수
 	public static int Stage4Gold; //스테이지 1~4에서 먹은 붕어빵 총 개수
-	
+
 	public void Update(){
 		
 		
@@ -62,12 +62,17 @@ public class GameManager : MonoBehaviour {
 				Stage4Gold += 1; //스테이지3에서 먹은 붕어빵 += 1
 				Text_Gold.text = string.Format ("{0}", Stage4Gold);
 			}
+			//else if (Application.loadedLevel==6)
+			//{
+				//Text_Gold.text = string.Format ("{0}", Stage4Gold);
+			//}
 		}
+
 		else if(GS == GameState.End) //죽으면
 			Stage1Gold = 0; //붕어빵 개수 리셋
 	}
 
-	public void meter(){
+	public void meter(){ //거리를 나타내는 함수
 		if (GS == GameState.Play) {
 			Meter += Time.deltaTime * Speed;
 			if(Application.loadedLevel==0){
@@ -75,16 +80,20 @@ public class GameManager : MonoBehaviour {
 			}
 			else if (Application.loadedLevel==1)
 			{
-				Text_Meter.text = string.Format("{0:N0}m",Meter+50);;
+				Text_Meter.text = string.Format("{0:N0}m",Meter+300);
 			}
 			
 			else if (Application.loadedLevel==2)
 			{
-				Text_Meter.text = string.Format("{0:N0}m",Meter+100);
+				Text_Meter.text = string.Format("{0:N0}m",Meter+600);
 			}
 			else if (Application.loadedLevel==3)
 			{
-				Text_Meter.text = string.Format("{0:N0}m",Meter+150);
+				Text_Meter.text = string.Format("{0:N0}m",Meter+900);
+			}
+			else if (Application.loadedLevel==6)
+			{
+				Final_Meter.text = string.Format("{0:N0}m",1200);
 			}
 		}
 	}
@@ -115,6 +124,9 @@ public class GameManager : MonoBehaviour {
 		case 3: //스테이지4라면
 			Final_Gold.text = string.Format ("{0}", Stage4Gold);
 			break;
+		//case 6: //if EndingScene
+			//Final_Gold.text = string.Format ("{0}", Stage4Gold);
+			//break;
 		}
 	}
 
@@ -143,6 +155,4 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1f;
 		Pause_GUI.SetActive (false);
 	}
-
-
 }

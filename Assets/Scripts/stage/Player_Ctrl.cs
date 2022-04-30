@@ -207,7 +207,7 @@ public class Player_Ctrl : MonoBehaviour {
 		if (PS != PlayerState.Death) {  //죽으면 스테이지 넘김 x
 			Meter += Time.deltaTime * 10;
 		}
-		if(Meter>=500){
+		if(Meter>=30){
 			if(Application.loadedLevel==0){ //해당 씬의 인덱스를 확인(0==스테이지 1로 빌드해야함. )
 				Application.LoadLevel ("stage_2");
 			}
@@ -220,7 +220,7 @@ public class Player_Ctrl : MonoBehaviour {
 			{
 				Application.LoadLevel ("stage_4");
 			}
-			else if (Application.loadedLevel==2)
+			else if (Application.loadedLevel==3)
 			{
 				Application.LoadLevel ("ending");
 			}
