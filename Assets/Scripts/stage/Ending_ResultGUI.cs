@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Ending_ResultGUI : MonoBehaviour {
-	
 	public GameObject FinalResult_GUI;
 	
 	void Update () {

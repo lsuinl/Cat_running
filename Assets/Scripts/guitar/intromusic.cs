@@ -2,11 +2,10 @@
 using System.Collections;
 
 public class intromusic : MonoBehaviour {
-	AudioSource backmusic;
+	//AudioSource backmusic;
 	int check;
 
-	void Start()
-	{
+	void Start(){
 		DontDestroyOnLoad(gameObject); 
 	}
 

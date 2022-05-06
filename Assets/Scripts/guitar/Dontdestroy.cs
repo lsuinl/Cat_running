@@ -2,25 +2,23 @@
 using System.Collections;
 
 public class Dontdestroy : MonoBehaviour {
+	public static Dontdestroy instance=null;
 
-	int check;
-
-	// Use this for initialization
-	void Start () {
+	void Awake()
+	{
+		if (instance != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+		instance = this;
 		DontDestroyOnLoad(gameObject);
+		
 	}
-	
 	// Update is called once per frame
 	void Update (){
-		if(Application.loadedLevel==4 ||  Application.loadedLevel==5){
-			Destroy(gameObject);
-		}
 
-		if (Application.loadedLevel == 1){
-			check = 2;
-		}
-
-		if(Application.loadedLevel==0 && check==2){
+		if(Application.loadedLevel==4 ||  Application.loadedLevel==6){
 			Destroy(gameObject);
 		}
 	}

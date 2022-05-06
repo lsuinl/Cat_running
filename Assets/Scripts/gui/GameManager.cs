@@ -27,12 +27,15 @@ public class GameManager : MonoBehaviour {
 	public static int Stage4Gold; //스테이지 1~4에서 먹은 붕어빵 총 개수
 
 	public void Update(){
-		
-		
 		meter ();
 	}
 	
 	public void CoinGet(){
+		if(Application.loadedLevel==6)
+		   {
+			Stage4Gold += 1;
+			Final_Gold.text = string.Format ("{0}", Stage4Gold);
+		}
 		if (GS != GameState.End) {
 			AnotherSpeaker.SendMessage ("SoundPlay");
 
@@ -62,48 +65,48 @@ public class GameManager : MonoBehaviour {
 				Stage4Gold += 1; //스테이지3에서 먹은 붕어빵 += 1
 				Text_Gold.text = string.Format ("{0}", Stage4Gold);
 			}
-			//else if (Application.loadedLevel==6)
-			//{
-				//Text_Gold.text = string.Format ("{0}", Stage4Gold);
-			//}
 		}
 
 		else if(GS == GameState.End) //죽으면
 			Stage1Gold = 0; //붕어빵 개수 리셋
 	}
 
+
 	public void meter(){ //거리를 나타내는 함수
 		if (GS == GameState.Play) {
 			Meter += Time.deltaTime * Speed;
 			if(Application.loadedLevel==0){
 				Text_Meter.text = string.Format("{0:N0}m",Meter);
+				Final_Meter.text = string.Format ("{0:N1}", Meter);
 			}
 			else if (Application.loadedLevel==1)
 			{
 				Text_Meter.text = string.Format("{0:N0}m",Meter+300);
+				Final_Meter.text = string.Format ("{0:N1}", Meter+300);
 			}
 			
 			else if (Application.loadedLevel==2)
 			{
 				Text_Meter.text = string.Format("{0:N0}m",Meter+600);
+				Final_Meter.text = string.Format ("{0:N1}", Meter+600);
 			}
 			else if (Application.loadedLevel==3)
 			{
 				Text_Meter.text = string.Format("{0:N0}m",Meter+900);
+				Final_Meter.text = string.Format ("{0:N1}", Meter+900);
 			}
 			else if (Application.loadedLevel==6)
 			{
-				Final_Meter.text = string.Format("{0:N0}m",1200);
+				Final_Meter.text = string.Format("{0:N0}",1200);
+				Final_Gold.text = string.Format ("{0}", Stage4Gold);
 			}
 		}
 	}
 
 
 	public void GameOver(){
-
-		Final_Meter.text = string.Format ("{0:N1}", Meter);
+		CoinGet ();
 		FinalScore(); //결과창에 나올 붕어빵 개수
-
 		GS = GameState.End;
 		Final_GUI.SetActive (true);
 
@@ -124,9 +127,6 @@ public class GameManager : MonoBehaviour {
 		case 3: //스테이지4라면
 			Final_Gold.text = string.Format ("{0}", Stage4Gold);
 			break;
-		//case 6: //if EndingScene
-			//Final_Gold.text = string.Format ("{0}", Stage4Gold);
-			//break;
 		}
 	}
 
