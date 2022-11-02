@@ -4,7 +4,7 @@
 길을 잃은 고양이가 헤어진 가족을 찾기 위해 떠나는 스토리를 가진 러닝 게임이다.
 
 # Tool
-<img width= "500" alt = "image" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Unity_2021.svg/1200px-Unity_2021.svg.png">
+<img width= "200" alt = "image" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Unity_2021.svg/1200px-Unity_2021.svg.png">
 
 # Team Member
 [김수인](https://github.com/lsuinl)
