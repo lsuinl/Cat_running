@@ -5,14 +5,6 @@
 
 
 # 🤹 Team Member
-[김수인](https://github.com/lsuinl) [조장]
-
-김도희
-
-[김효선](https://github.com/hy5sun)
-
-[오현의](https://github.com/hyunyeee)
-
 |<img src="https://github.com/lsuinl.png" width="80">|<img src="https://github.com/hy5sun.png" width="80">|<img src="https://github.com/hyunyeee.png" width="80">|🙂|
 |:---:|:---:|:---:|:---:|
 |[김수인](https://github.com/lsuinl)|[김효선](https://github.com/hy5sun)|[오현의](https://github.com/hyunyeee)|김도희|
