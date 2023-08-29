@@ -4,9 +4,9 @@
 
 
 # 🤹 Team Member
-|<img src="https://github.com/lsuinl.png" width="80">|<img src="https://github.com/hy5sun.png" width="80">|<img src="https://github.com/hyunyeee.png" width="80">|🙂|
-|:---:|:---:|:---:|:---:|
-|[김수인](https://github.com/lsuinl)|[김효선](https://github.com/hy5sun)|[오현의](https://github.com/hyunyeee)|김도희|
+|<img src="https://github.com/lsuinl.png" width="80">|<img src="https://github.com/hy5sun.png" width="80">|<img src="https://github.com/hyunyeee.png" width="80">|
+|:---:|:---:|:---:|
+|[김수인](https://github.com/lsuinl)|[김효선](https://github.com/hy5sun)|[오현의](https://github.com/hyunyeee)|
  
 # 👉 Notion
 [프로젝트 상세정보](https://www.notion.so/Cat-Running-9ce8a711353045f7a356f7794ee59c65)
